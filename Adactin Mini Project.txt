@@ -1,0 +1,159 @@
+package Com.Adactin.stepdefinition;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+import Com.Adactin.runner.Runnerclass;
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+
+public class Adactinstepdefinition {
+	
+	
+	public static WebDriver driver=Runnerclass.driver;
+
+	@Given("^user launch the Adactin application$")
+	public void user_launch_the_Adactin_application()  {
+		driver.get("https://adactinhotelapp.com/");
+	}
+
+	
+	@When("^user enter the username in user field$")
+	public void user_enter_the_username_in_user_field() throws Throwable {
+		driver.findElement(By.id("username")).sendKeys("Shaliniraja");
+	}
+
+	
+	
+	@When("^user enter the password in the password field$")
+	public void user_enter_the_password_in_the_password_field() throws Throwable {
+		driver.findElement(By.id("password")).sendKeys("Sshaliniraja@1234");
+	}
+
+	
+	@Then("^user enter the login button and navigate to the search hotel page$")
+	public void user_enter_the_login_button_and_navigate_to_the_search_hotel_page() throws Throwable {
+		driver.findElement(By.id("login")).click();
+		System.out.println(" Scenaio one successfully");
+	}
+		
+		@When("user select the location in location field")
+		public void user_select_the_location_in_location_field() throws Throwable {
+			WebElement Location = driver.findElement(By.xpath("//option[@value='Sydney']"));
+			Location.click();
+		}
+
+		@When("And user select the hotel in the Hotel field")
+		public void and_user_select_the_hotel_in_the_Hotel_field()throws Throwable  {
+			WebElement Hotel = driver.findElement(By.xpath("//option[@value='Hotel Creek']"));
+			Hotel.click();
+		}
+
+		@When("d user select the room type in rooom field")
+		public void d_user_select_the_room_type_in_rooom_field() throws Throwable  {
+			WebElement Room_type = driver.findElement(By.xpath("//*[@value='Standard']"));
+			Room_type.click();
+		}
+
+		@When("user select the no of available in the no of room field")
+		public void user_select_the_no_of_available_in_the_no_of_room_field() throws Throwable {
+			WebElement No_of_room = driver.findElement(By.xpath("(//option[@value='3'])[1]"));
+			No_of_room.click();
+			
+		}
+
+		@When("user enter the Check In Date and enter the date")
+		public void user_enter_the_Check_In_Date()throws Throwable  {
+			driver.findElement(By.id("datepick_in")).sendKeys("08/01/2020");
+		}
+
+		@When("user enter the Check Out Date and enter the check out date")
+		public void clear_the_default_check_in_date()throws Throwable  {
+			WebElement Datepickout = driver.findElement(By.id("datepick_out"));
+			Datepickout.sendKeys("20/01/2020");
+		}
+
+
+		@When("user select the Adults per Room in Adaults per room check box")
+		public void user_select_the_Adults_per_Room_in_Adaults_per_room_check_box()throws Throwable  {
+			WebElement Adult_room = driver.findElement(By.xpath("(//option[@value='4'])[2]"));
+			Adult_room.click();
+		}
+
+		@When("user select the Children per Room  in Children per Room box")
+		public void user_select_the_Children_per_Room_in_Children_per_Room_box()throws Throwable  {
+			WebElement Children_room = driver.findElement(By.xpath("(//option[@value='2'])[3]"));
+			Children_room.click();
+		}
+
+		@Then("user enter the search box button and navigate in to the Select Hotel page")
+		public void user_enter_the_search_box_button_and_navigate_in_to_the_Select_Hotel_page()throws Throwable  {
+			WebElement submit = driver.findElement(By.id("Submit"));
+			submit.click();
+			
+			System.out.println(" screnaio two sucessfully");
+		}
+		
+		@Given("user enter the availble hotel in the list")
+		public void user_enter_the_availble_hotel_in_the_list() {
+			driver.findElement(By.id("radiobutton_0")).click();
+		}
+
+		@Then("user enter the continue button and navigate in to the Book a Hotel page")
+		public void user_enter_the_continue_button_and_navigate_in_to_the_Book_a_Hotel_page() {
+		driver.findElement(By.id("continue")).click();
+		
+		System.out.println("Scenerio Three completed");
+		}
+		
+		
+		@Given("user enter the First Name into the First name column")
+		public void user_enter_the_First_Name_into_the_First_name_column() {
+			driver.findElement(By.id("first_name")).sendKeys("Shalini");
+		}
+
+		@Given("user enter the Last Name into the last name field")
+		public void user_enter_the_Last_Name_into_the_last_name_field() {
+			driver.findElement(By.id("last_name")).sendKeys("Raja");
+		}
+
+		@Given("user enter the Billing Address into the billing address field")
+		public void user_enter_the_Billing_Address_into_the_billing_address_field() {
+			driver.findElement(By.id("address")).sendKeys("Ambattur,Chennai-600053");
+		}
+
+		@Given("user enter the Credit Card No into the credit card field")
+		public void user_enter_the_Credit_Card_No_into_the_credit_card_field() {
+			driver.findElement(By.id("cc_num")).sendKeys("1111222233334444");
+		}
+
+		@When("user select the  Credit Card Type into the Credit Card Type field")
+		public void user_select_the_Credit_Card_Type_into_the_Credit_Card_Type_field() {
+			driver.findElement(By.xpath("//option[@value='VISA']")).click();
+		}
+
+		@When("user select the Expiry Date into the Expiry Date field month and year")
+		public void user_select_the_Expiry_Date_into_the_Expiry_Date_field_month_and_year() {
+			driver.findElement(By.xpath("//option[@value='9']")).click();
+			driver.findElement(By.xpath("//option[@value='2015']")).click();
+		}
+
+		@Given("user enter the CVV Number into the CVV Number field")
+		public void user_enter_the_CVV_Number_into_the_CVV_Number_field() {
+			driver.findElement(By.id("cc_cvv")).sendKeys("1234");
+		}
+
+		@Then("user enter the Book now box button and navigate to Booking Confirmation page")
+		public void user_enter_the_Book_now_box_button_and_navigate_to_Booking_Confirmation_page() {
+			driver.findElement(By.id("book_now")).click();
+			
+			System.out.println("Scenaio Four completed");
+		}
+}
+
+
+
+	
+
